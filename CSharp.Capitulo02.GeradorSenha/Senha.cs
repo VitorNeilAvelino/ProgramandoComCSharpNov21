@@ -8,17 +8,24 @@ namespace CSharp.Capitulo02.GeradorSenha
 {
     public class Senha
     {
-        public Senha()
+        //public Senha()
+        //{
+        //    Valor = Gerar();
+        //}
+
+        public Senha(int tamanho = TamanhoMinimo)
         {
+            Tamanho = tamanho;
+
             Valor = Gerar();
         }
 
         public const int TamanhoMinimo = 4;
         public const int TamanhoMaximo = 10;
-        public int Tamanho { get; set; } = TamanhoMinimo;
-        public string Valor { get; set; }
+        public int Tamanho { get; set; }// = TamanhoMinimo;
+        public string Valor { get; private set; }
 
-        public string Gerar()
+        private string Gerar()
         {
             var senha = string.Empty;
             var randomico = new Random();

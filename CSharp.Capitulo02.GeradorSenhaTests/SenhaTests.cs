@@ -11,19 +11,19 @@ namespace CSharp.Capitulo02.GeradorSenha.Tests
     [TestClass()]
     public class SenhaTests
     {
-        [TestMethod()]
-        public void GerarSenhaSemParametrosDeveRetornarSenhaPadrao()
-        {
-            var senha = new Senha();
+        //[TestMethod()]
+        //public void GerarSenhaSemParametrosDeveRetornarSenhaPadrao()
+        //{
+        //    var senha = new Senha();
 
-            //senha.Tamanho = 6;
+        //    //senha.Tamanho = 6;
 
-            var valorSenha = senha.Gerar();
+        //    var valorSenha = senha.Gerar();
 
-            Assert.IsTrue(valorSenha.Length == Senha.TamanhoMinimo);
+        //    Assert.IsTrue(valorSenha.Length == Senha.TamanhoMinimo);
 
-            Console.WriteLine(valorSenha);
-        }
+        //    Console.WriteLine(valorSenha);
+        //}
 
         [TestMethod]
         public void ConstrutorPadraoDeveRetornarSenhaPadrao()
@@ -33,6 +33,21 @@ namespace CSharp.Capitulo02.GeradorSenha.Tests
             //senha.Tamanho = 6;
 
             Assert.IsTrue(senha.Valor.Length == Senha.TamanhoMinimo);
+        }
+
+        [TestMethod]
+        [DataRow(6)]
+        [DataRow(8)]
+        [DataRow(10)]
+        public void ConstrutorParametrizadoDeveRetornarSenhaDeTamanhoEspecifico(int tamanho)
+        {
+            var senha = new Senha(tamanho);
+
+            //senha.Valor = "asdfasdf";
+
+            Assert.IsTrue(senha.Valor.Length == senha.Tamanho);
+            
+            Console.WriteLine(senha.Valor);
         }
     }
 }

@@ -6,15 +6,6 @@ namespace CSharp.Capitulo02.GeradorSenha
     {
         static void Main(string[] args)
         {
-            //var quantidadeDigitos = Convert.ToInt32(Console.ReadLine());
-
-            //if (quantidadeDigitos < 4 || quantidadeDigitos > 10 || quantidadeDigitos % 2 != 0)
-            //{
-            //    Console.WriteLine($"O valor {quantidadeDigitos} é inválido de acordo com as regras.");
-            //    Console.ReadKey();
-            //    return;
-            //}
-
             int quantidadeDigitos;
 
             do
@@ -23,16 +14,7 @@ namespace CSharp.Capitulo02.GeradorSenha
                 quantidadeDigitos = ObterQuantidadeDigitos();
             } while (quantidadeDigitos == 0);
 
-            //var senha = string.Empty;
-            //var randomico = new Random();
-
-            //for (int i = 0; i < quantidadeDigitos; i++)
-            //{
-            //    var digito = randomico.Next(10);
-            //    senha += digito;
-            //}
-
-            //Console.WriteLine($"Senha gerada: {senha}");
+            Console.WriteLine($"Senha gerada: {new Senha(quantidadeDigitos).Valor}");
         }
 
         private static int ObterQuantidadeDigitos()
