@@ -23,16 +23,16 @@ namespace CSharp.Capitulo02.GeradorSenha
                 quantidadeDigitos = ObterQuantidadeDigitos();
             } while (quantidadeDigitos == 0);
 
-            var senha = string.Empty;
-            var randomico = new Random();
+            //var senha = string.Empty;
+            //var randomico = new Random();
 
-            for (int i = 0; i < quantidadeDigitos; i++)
-            {
-                var digito = randomico.Next(10);
-                senha += digito;
-            }
+            //for (int i = 0; i < quantidadeDigitos; i++)
+            //{
+            //    var digito = randomico.Next(10);
+            //    senha += digito;
+            //}
 
-            Console.WriteLine($"Senha gerada: {senha}");
+            //Console.WriteLine($"Senha gerada: {senha}");
         }
 
         private static int ObterQuantidadeDigitos()

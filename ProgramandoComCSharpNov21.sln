@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Dominio", "Fintech.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Correntista.Wpf", "Fintech.Correntista.Wpf\Fintech.Correntista.Wpf.csproj", "{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Capitulo02.GeradorSenhaTests", "CSharp.Capitulo02.GeradorSenhaTests\CSharp.Capitulo02.GeradorSenhaTests.csproj", "{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
