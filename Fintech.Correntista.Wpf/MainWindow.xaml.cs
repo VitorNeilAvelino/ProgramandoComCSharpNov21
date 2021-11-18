@@ -77,5 +77,10 @@ namespace Fintech.Correntista.Wpf
             cidadeTextBox.Clear();
             cepTextBox.Clear();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
