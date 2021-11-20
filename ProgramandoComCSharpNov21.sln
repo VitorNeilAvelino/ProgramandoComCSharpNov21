@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fintech", "Fintech", "{00A9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Dominio", "Fintech.Dominio\Fintech.Dominio.csproj", "{9D1CE7B1-9D58-4D40-AFBA-7A66E869D69A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Correntista.Wpf", "Fintech.Correntista.Wpf\Fintech.Correntista.Wpf.csproj", "{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Correntista.Wpf", "Fintech.Correntista.Wpf\Fintech.Correntista.Wpf.csproj", "{6AAFE6BD-077E-4412-BBFB-C7AAD4F6CB29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Capitulo02.GeradorSenhaTests", "CSharp.Capitulo02.GeradorSenhaTests\CSharp.Capitulo02.GeradorSenhaTests.csproj", "{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Capitulo02.GeradorSenhaTests", "CSharp.Capitulo02.GeradorSenhaTests\CSharp.Capitulo02.GeradorSenhaTests.csproj", "{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Capitulo08.VetoresColecoes.Testes", "CSharp.Capitulo08.VetoresColecoes.Testes\CSharp.Capitulo08.VetoresColecoes.Testes.csproj", "{42C8D1D3-17D9-4725-909A-08A7DD9384EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13525BA5-58E8-4906-B7F4-2D9E7348CE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C8D1D3-17D9-4725-909A-08A7DD9384EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C8D1D3-17D9-4725-909A-08A7DD9384EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C8D1D3-17D9-4725-909A-08A7DD9384EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C8D1D3-17D9-4725-909A-08A7DD9384EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
