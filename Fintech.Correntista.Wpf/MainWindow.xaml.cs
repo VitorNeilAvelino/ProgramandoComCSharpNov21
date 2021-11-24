@@ -2,18 +2,8 @@
 using Fintech.Repositorios.SistemaArquivos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Fintech.Correntista.Wpf
 {
@@ -22,8 +12,10 @@ namespace Fintech.Correntista.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Cliente> clientes = new();
-        Cliente clienteSelecionado;
+        private List<Cliente> clientes = new();
+        private Cliente clienteSelecionado;
+        private readonly MovimentoRepositorio repositorio = new (Properties.Settings.Default.CaminhoArquivoMovimento);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -195,12 +187,23 @@ namespace Fintech.Correntista.Wpf
 
             if (movimento == null) return;
 
-            var repositorio = new MovimentoRepositorio();
             repositorio.Inserir(movimento);
 
             movimentacaoDataGrid.ItemsSource = conta.Movimentos;
             movimentacaoDataGrid.Items.Refresh();
 
+            saldoTextBox.Text = conta.Saldo.ToString("C");
+        }
+
+        private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (contaComboBox.SelectedIndex == -1) return;
+
+            var conta = (Conta)contaComboBox.SelectedItem;
+
+            conta.Movimentos = repositorio.Selecionar(conta.Agencia.Numero, conta.Numero);
+
+            movimentacaoDataGrid.ItemsSource = conta.Movimentos;
             saldoTextBox.Text = conta.Saldo.ToString("C");
         }
     }
