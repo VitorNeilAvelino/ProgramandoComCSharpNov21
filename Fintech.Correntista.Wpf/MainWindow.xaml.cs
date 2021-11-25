@@ -2,6 +2,7 @@
 using Fintech.Repositorios.SistemaArquivos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,7 +15,7 @@ namespace Fintech.Correntista.Wpf
     {
         private List<Cliente> clientes = new();
         private Cliente clienteSelecionado;
-        private readonly MovimentoRepositorio repositorio = new (Properties.Settings.Default.CaminhoArquivoMovimento);
+        private readonly MovimentoRepositorio repositorio = new(Properties.Settings.Default.CaminhoArquivoMovimento);
 
         public MainWindow()
         {
@@ -104,7 +105,7 @@ namespace Fintech.Correntista.Wpf
         private void tipoContaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tipoContaComboBox.SelectedItem == null) return;
-            
+
             var tipoConta = (TipoConta)tipoContaComboBox.SelectedItem;
 
             if (tipoConta == TipoConta.ContaEspecial)
@@ -179,29 +180,58 @@ namespace Fintech.Correntista.Wpf
 
         private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
         {
-            var conta = (Conta)contaComboBox.SelectedItem;
-            var operacao = (Operacao)operacaoComboBox.SelectedItem;
-            var valor = Convert.ToDecimal(valorTextBox.Text);
+            try
+            {
+                var conta = (Conta)contaComboBox.SelectedItem;
+                var operacao = (Operacao)operacaoComboBox.SelectedItem;
+                var valor = Convert.ToDecimal(valorTextBox.Text);
 
-            var movimento = conta.EfetuarOperacao(valor, operacao);
+                var movimento = conta.EfetuarOperacao(valor, operacao);
 
-            if (movimento == null) return;
+                if (movimento == null) return;
 
-            repositorio.Inserir(movimento);
+                repositorio.Inserir(movimento);
 
-            movimentacaoDataGrid.ItemsSource = conta.Movimentos;
-            movimentacaoDataGrid.Items.Refresh();
+                movimentacaoDataGrid.ItemsSource = conta.Movimentos;
+                movimentacaoDataGrid.Items.Refresh();
 
-            saldoTextBox.Text = conta.Saldo.ToString("C");
+                saldoTextBox.Text = conta.Saldo.ToString("C");
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"O arquivo {ex.FileName} não foi encontrado.");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                MessageBox.Show($"O diretório {Properties.Settings.Default.CaminhoArquivoMovimento} não foi encontrado.");
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eita! Algo deu errado e em breve teremos uma solução.");
+                //LogarErro(ex);
+                //log4net
+            }
+            finally
+            {
+                // É executado sempre! Mesmo que haja um return no código.
+            }
         }
 
         private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            mainSpinner.Visibility = Visibility.Visible;
+            
             if (contaComboBox.SelectedIndex == -1) return;
 
             var conta = (Conta)contaComboBox.SelectedItem;
 
             conta.Movimentos = repositorio.Selecionar(conta.Agencia.Numero, conta.Numero);
+
+            mainSpinner.Visibility = Visibility.Hidden;
 
             movimentacaoDataGrid.ItemsSource = conta.Movimentos;
             saldoTextBox.Text = conta.Saldo.ToString("C");

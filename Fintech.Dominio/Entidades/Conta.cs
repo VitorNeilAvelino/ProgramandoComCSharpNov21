@@ -16,7 +16,7 @@ namespace Fintech.Dominio.Entidades
         public Agencia Agencia { get; set; }
         public int Numero { get; set; }
         public string DigitoVerificador { get; set; }
-        public decimal Saldo 
+        public decimal Saldo
         {
             get { return TotalDepositos - TotalSaques; }
             private set { } 
@@ -35,7 +35,7 @@ namespace Fintech.Dominio.Entidades
 
         public virtual Movimento EfetuarOperacao(decimal valor, Operacao operacao, decimal limite = 0)
         {
-            var sucesso = true;
+            //var sucesso = true;
             Movimento movimento = null;
             
             switch (operacao)
@@ -50,18 +50,20 @@ namespace Fintech.Dominio.Entidades
                     }
                     else
                     {
-                        sucesso = false;
+                        //sucesso = false;
+                        //throw new System.Exception("Saldo insuficiente.");
+                        throw new SaldoInsuficienteException();
                     }
                     break;
             }
 
-            if (sucesso)
-            {
+            //if (sucesso)
+            //{
                 movimento = new Movimento(operacao, valor);
                 movimento.Conta = this;
 
                 Movimentos.Add(movimento);
-            }
+            //}
 
             return movimento;
         }
