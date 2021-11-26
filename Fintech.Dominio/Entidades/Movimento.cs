@@ -4,6 +4,11 @@ namespace Fintech.Dominio.Entidades
 {
     public class Movimento
     {
+        public Movimento()
+        {
+
+        }
+
         public Movimento(Operacao operacao, decimal valor)
         {
             Operacao = operacao;
