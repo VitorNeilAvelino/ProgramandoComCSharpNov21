@@ -1,5 +1,6 @@
 ﻿using Fintech.Dominio.Entidades;
-using Fintech.Repositorios.SistemaArquivos;
+//using Fintech.Repositorios.SistemaArquivos;
+using Fintech.Repositorios.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,8 @@ namespace Fintech.Correntista.Wpf
     {
         private List<Cliente> clientes = new();
         private Cliente clienteSelecionado;
-        private readonly MovimentoRepositorio repositorio = new(Properties.Settings.Default.CaminhoArquivoMovimento);
+        //private readonly MovimentoRepositorio repositorio = new(Properties.Settings.Default.CaminhoArquivoMovimento);
+        private readonly MovimentoRepositorio repositorio = new(Properties.Settings.Default.StringConexaoFintech);
 
         public MainWindow()
         {
