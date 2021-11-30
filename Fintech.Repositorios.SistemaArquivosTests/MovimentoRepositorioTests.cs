@@ -12,7 +12,7 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
     [TestClass()]
     public class MovimentoRepositorioTests
     {
-        private readonly MovimentoRepositorio repositorio = new ("Dados\\Movimento.txt");
+        private readonly MovimentoRepositorio repositorio = new("Dados\\Movimento.txt");
 
         [TestMethod()]
         public void InserirTest()
@@ -105,12 +105,12 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
         {
             var agrupamento = repositorio.Selecionar(2, 1)
                 //.GroupBy(m => m.Operacao)
-                .GroupBy(m => new { m.Operacao, m.Data })
-                .Select(g => new { Operacao = g.Key.Operacao, Data = g.Key.Data.ToShortDateString(), Total = g.Sum(m => m.Valor) });
+                .GroupBy(m => new { m.Operacao, m.Data.Date })
+                .Select(g => new { Operacao = g.Key.Operacao, Data = g.Key.Date, Total = g.Sum(m => m.Valor) });
 
             foreach (var item in agrupamento)
             {
-                Console.WriteLine($"{item.Operacao} - {item.Data}: {item.Total:c}");
+                Console.WriteLine($"{item.Operacao} - {item.Data:d}: {item.Total:c}");
             }
         }
     }
