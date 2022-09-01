@@ -61,8 +61,9 @@ namespace Fintech.Correntista.Wpf
             endereco.Cidade = cidadeTextBox.Text;
             endereco.Logradouro = logradouroTextBox.Text;
             endereco.Numero = numeroLogradouroTextBox.Text;
+            endereco.Tipo = TipoEndereco.Residencial;
 
-            cliente.EnderecoResidencial = endereco;
+            cliente.Enderecos.Add(endereco);
 
             cliente.Nome = nomeTextBox.Text;
             cliente.Sexo = (Sexo)sexoComboBox.SelectedItem;
