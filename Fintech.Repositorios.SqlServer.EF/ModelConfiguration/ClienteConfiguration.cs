@@ -12,8 +12,6 @@ namespace Fintech.Repositorios.SqlServer.EF.ModelConfiguration
 
             builder.HasIndex(c => c.Cpf).IsUnique();
 
-            //builder.HasMany(c => c.Enderecos);
-
             builder.Property(c => c.Cpf).IsRequired().HasMaxLength(11);
             builder.Property(c => c.Nome).IsRequired().HasMaxLength(250);
             builder.Property(c => c.DataNascimento).IsRequired();
